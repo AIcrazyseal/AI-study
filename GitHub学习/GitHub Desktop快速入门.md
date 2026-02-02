@@ -19,35 +19,23 @@ GitHub Desktop 是一个开源项目。 您可以查看路线图、为项目做�
 
 ## 第 1 部分：安装和身份验证
 
-您可以在任何支持的操作系统上安装 GitHub Desktop。 有关详细信息，请参阅“[GitHub Desktop 支持的操作系统](/zh/desktop/overview/supported-operating-systems-for-github-desktop)”。
+您可以在任何支持的操作系统上安装 GitHub Desktop。 有关详细信息，请参阅“[GitHub Desktop 支持的操作系统](https://docs.github.com/zh/desktop/overview/supported-operating-systems-for-github-desktop)”。
 
-要安装 GitHub Desktop，请访问 [GitHub Desktop](https://desktop.github.com/) 的下载页面。 有关详细信息，请参阅“[安装 GitHub Desktop](/zh/desktop/installing-and-authenticating-to-github-desktop/installing-github-desktop)”。
+要安装 GitHub Desktop，请访问 [GitHub Desktop](https://desktop.github.com/) 的下载页面。 有关详细信息，请参阅“[安装 GitHub Desktop](https://docs.github.com/zh/desktop/installing-and-authenticating-to-github-desktop/installing-github-desktop)”。
 
 在安装 GitHub Desktop 后，您可以使用您在 GitHub 或 GitHub Enterprise 上的帐户验证应用程序。 身份验证允许您连接到 GitHub 或 GitHub Enterprise 上的远程仓库。
 
-<div class="ghd-tool mac">
-
-1. 在向 GitHub 或 GitHub Enterprise 进行身份验证之前，你需要一个帐户。有关详细信息，请参阅 [在 GitHub 上创建帐户](/zh/get-started/start-your-journey/creating-an-account-on-github)。
-2. 在菜单栏中，选择“GitHub Desktop”，然后单击“设置”。\
-   <img src="https://docs.github.com/assets/cb-10737/mw-1440/images/help/desktop/windows-choose-options.webp" width=60% style=“display:block;margin:0”>
-   
-3. 在“设置”窗口中的“帐户”窗格中，单击相应的“登录”按钮。\ 使用“登录到 GitHub Enterprise”登录到 GitHub Enterprise Server 或 具有数据驻留的 GitHub Enterprise Cloud。\
-
-   ![“设置”窗口中“帐户”窗格的屏幕截图。 会显示标记为“登录到 GitHub.com”和“登录到 GitHub Enterprise”的蓝色按钮。](/assets/images/help/desktop/sign-in-github.png)
-4. 按照以下步骤登录。 有关身份验证的详细信息，请参阅“[在 GitHub Desktop 中向 GitHub 进行身份验证](/zh/desktop/installing-and-authenticating-to-github-desktop/authenticating-to-github-in-github-desktop)”。
-
-</div>
-
 <div class="ghd-tool windows">
 
-1. 在向 GitHub 或 GitHub Enterprise 进行身份验证之前，你需要一个帐户。有关详细信息，请参阅 [在 GitHub 上创建帐户](/zh/get-started/start-your-journey/creating-an-account-on-github)。
+1. 在向 GitHub 或 GitHub Enterprise 进行身份验证之前，你需要一个帐户。有关详细信息，请参阅 [在 GitHub 上创建帐户](https://docs.github.com/zh/get-started/start-your-journey/creating-an-account-on-github)。
 2. 使用文件”菜单，然后单击“选项” 。
 
-   ![Windows 上的“GitHub Desktop”菜单栏的屏幕截图。 在展开的“文件”下拉菜单中，以橙色框出了“选项”项。](/assets/images/help/desktop/windows-choose-options.png)
-3. 在“选项”窗口中的“帐户”窗格中，单击相应的“登录”按钮\*\*\*\*。 使用“登录到 GitHub Enterprise”登录到 GitHub Enterprise Server 或 具有数据驻留的 GitHub Enterprise Cloud\*\*\*\*。
+  <img src="https://docs.github.com/assets/cb-10737/mw-1440/images/help/desktop/windows-choose-options.webp" width=50% style=“display:block;margin:0”> 
+  
+3. 在“选项”窗口中的“帐户”窗格中，单击相应的“登录”按钮。 使用“登录到 GitHub Enterprise”登录到 GitHub Enterprise Server 或 具有数据驻留的 GitHub Enterprise Cloud。
 
-   ![“选项”窗口中“帐户”窗格的屏幕截图。 会显示标记为“登录到 GitHub.com”和“登录到 GitHub Enterprise”的蓝色按钮。](/assets/images/help/desktop/windows-sign-in-github.png)
-4. 按照以下步骤登录。 有关身份验证的详细信息，请参阅“[在 GitHub Desktop 中向 GitHub 进行身份验证](/zh/desktop/installing-and-authenticating-to-github-desktop/authenticating-to-github-in-github-desktop)”。
+   <img src="https://docs.github.com/assets/cb-65983/mw-1440/images/help/desktop/windows-sign-in-github.webp" alt="“选项”窗口中“帐户”窗格的屏幕截图。 会显示标记为“登录到 GitHub.com”和“登录到 GitHub Enterprise”的蓝色按钮。" width=50% style="display:block;margin=0;">
+4. 按照以下步骤登录。 有关身份验证的详细信息，请参阅“[在 GitHub Desktop 中向 GitHub 进行身份验证](https://docs.github.com/zh/desktop/installing-and-authenticating-to-github-desktop/authenticating-to-github-in-github-desktop)”。
 
 </div>
 
