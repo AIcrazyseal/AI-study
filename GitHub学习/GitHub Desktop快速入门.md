@@ -31,7 +31,7 @@ GitHub Desktop 是一个开源项目。 您可以查看路线图、为项目做�
   
 2. 使用文件”菜单，然后单击“选项” 。
 
-  <img src="https://docs.github.com/assets/cb-10737/mw-1440/images/help/desktop/windows-choose-options.webp" width=50% style=“display:block;margin:0”>
+  <img src="https://docs.github.com/assets/cb-10737/mw-1440/images/help/desktop/windows-choose-options.webp" width=50% style="display:block;margin=0;">
   
 3. 在“选项”窗口中的“帐户”窗格中，单击相应的“登录”按钮。 使用“登录到 GitHub Enterprise”登录到 GitHub Enterprise Server 或 具有数据驻留的 GitHub Enterprise Cloud。
    
