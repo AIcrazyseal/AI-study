@@ -5,15 +5,15 @@
 
 ## 一、快速入门简介
 
-GitHub Desktop 是免费的开放源代码应用程序，可帮助处理托管在 GitHub 或其他 Git 托管服务上的代码。 使用 GitHub Desktop，可以在图形用户界面中执行提交和推送更改等 Git 命令，而不是使用命令行。 有关详细信息，请参阅“[关于 GitHub Desktop](/zh/desktop/installing-and-configuring-github-desktop/overview/about-github-desktop)”。
+GitHub Desktop 是免费的开放源代码应用程序，可帮助处理托管在 GitHub 或其他 Git 托管服务上的代码。 使用 GitHub Desktop，可以在图形用户界面中执行提交和推送更改等 Git 命令，而不是使用命令行。 有关详细信息，请参阅“[关于 GitHub Desktop](https://docs.github.com/zh/desktop/installing-and-configuring-github-desktop/overview/about-github-desktop)”。
 
 本指南将介绍设置应用程序、验证帐户、配置基本设置，以及介绍使用 GitHub Desktop 管理项目的基础知识，帮助您开始使用 GitHub Desktop。 在读完本指南后，您将能够使用 GitHub Desktop 协作处理项目并连接到远程仓库。
 
 您可能会发现，在开始使用 GitHub 之前，基本了解 Git 和 GitHub Desktop 会有帮助。 有关详细信息，请参阅以下文章。
 
-* [使用 Git](/zh/get-started/using-git)
-* [了解 GitHub](/zh/get-started/learning-about-github)
-* [GitHub 入门文档](/zh/get-started)
+* [使用 Git](https://docs.github.com/zh/get-started/using-git)
+* [了解 GitHub](https://docs.github.com/zh/get-started/learning-about-github)
+* [GitHub 入门文档](https://docs.github.com/zh/get-started)
 
 GitHub Desktop 是一个开源项目。 您可以查看路线图、为项目做出贡献，或者打开议题以提供反馈或功能请求。 有关详细信息，请参阅 [`desktop/desktop`](https://github.com/desktop/desktop) 存储库。
 
