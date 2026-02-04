@@ -26,7 +26,8 @@
 
 1.代码编写
 
-* 可以编写.md、.js等文件，并调试运行；2.[源代码控制(Source Control)](https://code.visualstudio.com/docs/sourcecontrol/overview)
+* 可以编写.md、.js等文件，并调试运行；
+2.[源代码控制(Source Control)](https://code.visualstudio.com/docs/sourcecontrol/overview)
 * VS Code 集成了源代码管理（SCM），并开箱即用 Git 支持。
 
 3.安装语言扩展
