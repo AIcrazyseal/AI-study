@@ -6,6 +6,6 @@ print("a=",a,"b=",b,"a*b=",a*b)
 """
 
 import sys
-f = open('/app.js')
+f = open('./a.txt','r')
 s = f.readline()
 print(s)
