@@ -15,8 +15,9 @@
 * [VSCode的Python run and debug配置](https://vscode.js.cn/docs/python/debugging)
 * [launch.json深度解析](https://www.cnblogs.com/yangykaifa/p/19179327)
 
-3.[Git学习文档](https://git-scm.com/docs)\
-4.[Jupyter Notebook学习]()
+3.
+4.[Git学习文档](https://git-scm.com/docs)\
+5.[Jupyter Notebook学习]()
 
 ## 三、编程工具
 
@@ -24,3 +25,7 @@
 2.[Markdown学习]()
 
 2.[开源笔记软件 GitNote 配置及试用](https://www.thinkinpython.com/post/tools_gitnote.html)
+
+## 四、文本分析工具
+1.[MakeitDown:文本转换工具](https://github.com/microsoft/markitdown)，轻量级的Python工具，用于将各种文件转换为Markdown，用于大型语言模型（LLM）及相关文本分析管道。
+2.[textract：从任何文档中提取文本](https://github.com/deanmalmgren/textract)
