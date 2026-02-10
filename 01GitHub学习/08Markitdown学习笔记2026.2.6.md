@@ -129,3 +129,6 @@ print(result.text_content)
 docker build -t markitdown:latest .
 docker run --rm -i markitdown:latest < ~/your-file.pdf > output.md
 ```
+## 四、缺陷
+1.markitdown无法将文件中的图片转换到.md文件中，即图片会丢失；、
+2.表格格式会乱。

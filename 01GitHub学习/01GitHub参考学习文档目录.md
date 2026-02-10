@@ -40,5 +40,5 @@
 
 ## 三、文本分析工具
 
-1.[MarkitDown:文本转换工具](https://github.com/microsoft/markitdown)，轻量级的Python工具，用于将各种文件转换为Markdown，用于大型语言模型（LLM）及相关文本分析管道。
+1.[MarkitDown:文本转换工具](https://github.com/microsoft/markitdown)，轻量级的Python工具，用于将各种文件转换为Markdown，用于大型语言模型（LLM）及相关文本分析管道。优点：文字内容一键转换效率高；缺点：转换后图片丢失，表格格式会乱。结论：不用。
 2.[textract：从任何文档中提取文本](https://github.com/deanmalmgren/textract)
