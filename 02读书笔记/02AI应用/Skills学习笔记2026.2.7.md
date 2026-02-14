@@ -20,5 +20,5 @@ Skills是把临时的、通用的Prompt变成永久保存的知识资产。
 告诉AI（如Copilot）："帮我把https://skills.sh/remotion-dev/skills/remotion-best-practices安装到本地**文件夹中"即可。
 
 Skill文件夹结构
-![Skill文件夹结构](img/skill文件夹结构.png)
-![Skill文件夹功能](img/skill文件夹功能.png)
+![Skill文件夹结构](/AI-study/images/skill文件夹结构.png)
+![Skill文件夹功能](/AI-study/images/skill文件夹功能.png)
