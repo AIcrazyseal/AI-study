@@ -38,8 +38,8 @@ AI采用**渐进式披露机制**，接收到具体任务时才会读取Skills�
 
 ### 5.Skill文件夹结构
 
-![Skill文件夹结构](../../../images/skill文件夹结构.png)
-![Skill文件夹功能](/AI-study/images/skill文件夹功能.png)
+![Skill文件夹结构](../../images/skill文件夹结构.png)
+![Skill文件夹功能](../../images/skill文件夹功能.png)
 
 ### 6.如何使用Skill
 
