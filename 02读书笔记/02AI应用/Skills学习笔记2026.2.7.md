@@ -38,7 +38,7 @@ AI采用**渐进式披露机制**，接收到具体任务时才会读取Skills�
 
 ### 5.Skill文件夹结构
 
-![Skill文件夹结构](/AI-study/images/skill文件夹结构.png)
+![Skill文件夹结构](../../../images/skill文件夹结构.png)
 ![Skill文件夹功能](/AI-study/images/skill文件夹功能.png)
 
 ### 6.如何使用Skill
@@ -201,7 +201,7 @@ AI采用**渐进式披露机制**，接收到具体任务时才会读取Skills�
 
 ## 四、可用资源
 
-### 1. [skills网站](https://skills.sh/)
+### 1. [skills网站](https://skills.sh/)、[Clawhub skill网站](https://clawhub.ai/)
 
 ### 2.[remotion-best-practices资源仓库](https://skills.sh/remotion-dev/skills/remotion-best-practices)
 
