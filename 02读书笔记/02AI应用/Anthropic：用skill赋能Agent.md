@@ -13,13 +13,13 @@ Anthropic发布
 
 ### 1.典型的skill文件文件夹结构
 
-skill-name/
-└── SKILL.md               #必须
-    └── YAML frontmatter   #必须
-    └── Body content       #必须
-└── scripts/               #可选 包含Agent可执行的代码
-└── references/            #可选 包含Agent在需要时可阅读的额外文件（REFERENCE.md、FORMS.md、域特定文件）
-└── assets/                #可选
+skill-name/  \
+|── SKILL.md               #必须\
+    |── YAML frontmatter   #必须\
+    |── Body content       #必须\
+|── scripts/               #可选 包含Agent可执行的代码\
+|── references/            #可选 包含Agent在需要时可阅读的额外文件（REFERENCE.md、FORMS.md、域特定文件）\
+|── assets/                #可选\
 
 ### 2.典型skill文件结构
 #### （1）YAML格式的前言
