@@ -1,8 +1,8 @@
 # Skill学习笔记
 
 ```
-   2026.2.7创建
-   2026.2.16补充更新
+   创建:2026.2.7
+   更新:2026.2.16
 ```
 
 ## 一、skills简介
@@ -37,9 +37,32 @@ AI采用**渐进式披露机制**，接收到具体任务时才会读取Skills�
   更详细情况参见[Anthropics官方 Skill lib](https://github.com/anthropics/skills)
 
 ### 5.Skill文件夹结构
+1.文件夹理论结构
+  ![Skill文件夹结构](../../images/skill文件夹结构.png)
+  ![Skill文件夹功能](../../images/skill文件夹功能.png)
+2.根据 Anthropic 官方文档，构建高质量skill文件夹应该遵循：
+  * 分层信息组织：遵循 Progressive Disclosure 原则，优化 Context 使用效率
+  * 边界明确：每个 Skill 专注解决特定类型的问题，避免功能重叠
+  * AI 代理优先：内容设计优先考虑 AI 代理的使用场景，而非人类直接阅读
+  * 结构化输出：生成的信息应该便于其他 AI 代理解析和使用
+  * 提供执行接口：包含可执行脚本，便于自动化调用和工具链集成\
 
-![Skill文件夹结构](../../images/skill文件夹结构.png)
-![Skill文件夹功能](../../images/skill文件夹功能.png)
+3.推荐的文件组织结构\
+your-skill/\
+├── SKILL.md                # 核心工作流程（建议 50 ~ 150个token）\
+├── configuration.md        # 详细配置参数和环境设置\
+├── troubleshooting.md      # 常见问题和解决方案\
+├── examples/               # 分层使用案例\
+│   ├── basic-usage.md\
+│   ├── advanced-patterns.md\
+│   └── integration-examples.md\
+├── scripts/                # 自动化工具\
+│   ├── setup.sh           # 环境配置\
+│   ├── validate.py        # 功能验证\
+│   └── deploy.yml         # 部署自动化\
+└── integration/            # 与其他系统的集成\
+    ├── ci-cd.md           # 持续集成配置\
+    └── api-clients.md     # API 客户端示例\
 
 ### 6.如何使用Skill
 

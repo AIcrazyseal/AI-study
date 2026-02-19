@@ -2,7 +2,8 @@
 
 ```
 Anthropic发布
-20256.2.16
+创建：2026.2.16
+更新：2026.2.19
 ```
 
 **技术思路：通用Agent+Skill（有序的指令skill.md、脚本scripts、references文件、assets模板打包成可组合、专业知识的资源）=垂直领域专用Agent。**
