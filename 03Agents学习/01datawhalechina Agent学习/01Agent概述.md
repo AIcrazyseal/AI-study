@@ -191,43 +191,37 @@ Observation: 北京当前天气为晴，气温25摄氏度，微风。
 bash
 pip install requests tavily-python openai `用于安装三个 Python 库`
 
-（1）指令模板
+#### （1）指令模板
 
 驱动真实 LLM 的关键在于 提示工程（Prompt Engineering）。我们需要设计一个“指令模板”，告诉 LLM 它应该扮演什么角色、拥有哪些工具、以及如何格式化它的思考和行动。这是我们智能体的“说明书”，它将作为 system_prompt传递给 LLM。
 
 AGENT_SYSTEM_PROMPT = """
 你是一个智能旅行助手。你的任务是分析用户的请求，并使用可用工具一步步地解决问题。
 
-# 可用工具:
+* 可用工具:\
+  get_weather(city: str): 查询指定城市的实时天气。\
+  get_attraction(city: str, weather: str): 根据城市和天气搜索推荐的旅游景点。
 
-- get_weather(city: str): 查询指定城市的实时天气。
-- get_attraction(city: str, weather: str): 根据城市和天气搜索推荐的旅游景点。
-
-# 输出格式要求:
-
-你的每次回复必须严格遵循以下格式，包含一对Thought和Action：
-
-Thought: [你的思考过程和下一步计划]
-Action: [你要执行的具体行动]
+* 输出格式要求:\
+  你的每次回复必须严格遵循以下格式，包含一对Thought和Action：\
+  Thought: [你的思考过程和下一步计划]\
+  Action: [你要执行的具体行动]
 
 Action的格式必须是以下之一：
-
 1. 调用工具：function_name(arg_name="arg_value")
 2. 结束任务：Finish[最终答案]
 
-# 重要提示:
-
-- 每次只输出一对Thought-Action
-- Action必须在同一行，不要换行
-- 当收集到足够信息可以回答用户问题时，必须使用 Action: Finish[最终答案] 格式结束
+* 重要提示:
+  - 每次只输出一对Thought-Action
+  - Action必须在同一行，不要换行
+  - 当收集到足够信息可以回答用户问题时，必须使用 Action: Finish[最终答案] 格式结束
 
 请开始吧！
 """
 
-（2）工具 1：查询真实天气
+#### （2）工具 1：查询真实天气
 
-我们将使用免费的天气查询服务 wttr.in，它能以 JSON 格式返回指定城市的天气数据。下面是实现该工具的代码：
-
+我们将使用免费的天气查询服务 wttr.in，它能以 JSON 格式返回指定城市的天气数据。下面是实现该工具的代码：\
 python
 import requests
 
@@ -261,7 +255,7 @@ def get_weather(city: str) -> str:
         # 处理数据解析错误
         return f"错误:解析天气数据失败，可能是城市名称无效 - {e}"
 
-（3）工具 2：搜索并推荐旅游景点
+#### （3）工具 2：搜索并推荐旅游景点
 
 我们将定义一个新工具 search_attraction，它会根据城市和天气状况，互联网上搜索合适的景点：
 
@@ -285,7 +279,7 @@ def get_attraction(city: str, weather: str) -> str:
     query = f"'{city}' 在'{weather}'天气下最值得去的旅游景点推荐及理由"
 
     try:
-        # 4. 调用API，include_answer=True会返回一个综合性的回答
+    # 4. 调用API，include_answer=True会返回一个综合性的回答
         response = tavily.search(query=query, search_depth="basic", include_answer=True)
 
     # 5. Tavily返回的结果已经非常干净，可以直接使用
@@ -310,7 +304,7 @@ def get_attraction(city: str, weather: str) -> str:
 
 python
 
-# 将所有工具函数放入一个字典，方便后续调用
+``` 将所有工具函数放入一个字典，方便后续调用```
 
 available_tools = {
     "get_weather": get_weather,
@@ -319,7 +313,7 @@ available_tools = {
 
 ### 1.3.2 接入大语言模型
 
-当前，许多 LLM 服务提供商（包括 OpenAI、Azure、以及众多开源模型服务框架如 Ollama、vLLM 等）都遵循了与 OpenAI API 相似的接口规范。这种标准化为开发者带来了极大的便利。智能体的自主决策能力来源于 LLM。我们将实现一个通用的客户端 OpenAICompatibleClient，它可以连接到任何兼容 OpenAI 接口规范的 LLM 服务。
+当前，许多 LLM 服务提供商（包括 OpenAI、Azure、以及众多开源模型服务框架如 Ollama、vLLM 等）都遵循了与 OpenAI API 相似的接口规范。这种标准化为开发者带来了极大的便利。**智能体的自主决策能力来源于 LLM**。我们将实现一个通用的客户端 OpenAICompatibleClient，它可以连接到任何兼容 OpenAI 接口规范的 LLM 服务。
 
 python
 from openai import OpenAI
@@ -360,11 +354,10 @@ class OpenAICompatibleClient:
 
 python
 import re
-
-# --- 1. 配置LLM客户端 ---
-
-# 请根据您使用的服务，将这里替换成对应的凭证和地址
-
+```
+ --- 1. 配置LLM客户端 ---\
+ 请根据您使用的服务，将这里替换成对应的凭证和地址
+```
 API_KEY = "YOUR_API_KEY"
 BASE_URL = "YOUR_BASE_URL"
 MODEL_ID = "YOUR_MODEL_ID"
@@ -377,22 +370,22 @@ llm = OpenAICompatibleClient(
     base_url=BASE_URL
 )
 
-# --- 2. 初始化 ---
+ ```--- 2. 初始化 ---```
 
 user_prompt = "你好，请帮我查询一下今天北京的天气，然后根据天气推荐一个合适的旅游景点。"
 prompt_history = [f"用户请求: {user_prompt}"]
 
 print(f"用户输入: {user_prompt}\n" + "="*40)
 
-# --- 3. 运行主循环 ---
+``` --- 3. 运行主循环 ---```
 
 for i in range(5): # 设置最大循环次数
     print(f"--- 循环 {i+1} ---\n")
 
-    # 3.1. 构建Prompt
+    ```# 3.1. 构建Prompt```
     full_prompt = "\n".join(prompt_history)
 
-    # 3.2. 调用LLM进行思考
+    ```# 3.2. 调用LLM进行思考```
     llm_output = llm.generate(full_prompt, system_prompt=AGENT_SYSTEM_PROMPT)
     # 模型可能会输出多余的Thought-Action，需要截断
     match = re.search(r'(Thought:.*?Action:.*?)(?=\n\s*(?:Thought:|Action:|Observation:)|\Z)', llm_output, re.DOTALL)
@@ -404,7 +397,7 @@ for i in range(5): # 设置最大循环次数
     print(f"模型输出:\n{llm_output}\n")
     prompt_history.append(llm_output)
 
-    # 3.3. 解析并执行行动
+    ```# 3.3. 解析并执行行动```
     action_match = re.search(r"Action: (.*)", llm_output, re.DOTALL)
     if not action_match:
         observation = "错误: 未能解析到 Action 字段。请确保你的回复严格遵循 'Thought: ... Action: ...' 的格式。"
@@ -428,7 +421,7 @@ for i in range(5): # 设置最大循环次数
     else:
         observation = f"错误:未定义的工具 '{tool_name}'"
 
-    # 3.4. 记录观察结果
+    ```# 3.4. 记录观察结果```
     observation_str = f"Observation: {observation}"
     print(f"{observation_str}\n" + "="*40)
     prompt_history.append(observation_str)
@@ -439,38 +432,33 @@ for i in range(5): # 设置最大循环次数
 
 以下输出完整地展示了一个成功的智能体执行流程。通过对这个三轮循环的分析，我们可以清晰地看到智能体解决问题的核心能力。
 
-bash
+bash\
 用户输入: 你好，请帮我查询一下今天北京的天气，然后根据天气推荐一个合适的旅游景点。
-==================================================================================
 
 --- 循环 1 ---
 
-正在调用大语言模型...
-大语言模型响应成功。
-模型输出:
-Thought: 首先需要获取北京今天的天气情况，之后再根据天气情况来推荐旅游景点。
-Action: get_weather(city="北京")
-
+正在调用大语言模型...\
+大语言模型响应成功。\
+模型输出:\
+Thought: 首先需要获取北京今天的天气情况，之后再根据天气情况来推荐旅游景点。\
+Action: get_weather(city="北京")\
 Observation: 北京当前天气:Sunny，气温26摄氏度
-=============================================
 
 --- 循环 2 ---
 
-正在调用大语言模型...
-大语言模型响应成功。
-模型输出:
-Thought: 现在已经知道了北京今天的天气是晴朗且温度适中，接下来可以基于这个信息来推荐一个适合的旅游景点了。
-Action: get_attraction(city="北京", weather="Sunny")
-
+正在调用大语言模型...\
+大语言模型响应成功。\
+模型输出:\
+Thought: 现在已经知道了北京今天的天气是晴朗且温度适中，接下来可以基于这个信息来推荐一个适合的旅游景点了。\
+Action: get_attraction(city="北京", weather="Sunny")\
 Observation: 北京在晴天最值得去的旅游景点是颐和园，因其美丽的湖景和古建筑。另一个推荐是长城，因其壮观的景观和历史意义。
-=======================================================================================================================
 
 --- 循环 3 ---
 
-正在调用大语言模型...
-大语言模型响应成功。
-模型输出:
-Thought: 已经获得了两个适合晴天游览的景点建议，现在可以根据这些信息给用户提供满意的答复。
+正在调用大语言模型...\
+大语言模型响应成功。\
+模型输出:\
+Thought: 已经获得了两个适合晴天游览的景点建议，现在可以根据这些信息给用户提供满意的答复。\
 Action: Finish[今天北京的天气是晴朗的，气温26摄氏度，非常适合外出游玩。我推荐您去颐和园欣赏美丽的湖景和古建筑，或者前往长城体验其壮观的景观和深厚的历史意义。希望您有一个愉快的旅行！]
 
 任务完成，最终答案: 今天北京的天气是晴朗的，气温26摄氏度，非常适合外出游玩。我推荐您去颐和园欣赏美丽的湖景和古建筑，或者前往长城体验其壮观的景观和深厚的历史意义。希望您有一个愉快的旅行！
