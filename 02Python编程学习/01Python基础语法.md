@@ -109,3 +109,7 @@
       - 控制from package import *的行为；
       - 明确并控制 API 的公共接口，防止API内部实现细节被曝光；
       - 在包（Package）的__init__.py 中使用；
+## 输入输出
+- 输出方式：print(),表达式语句，文件对象的write()方法；
+- 格式化字符串：在字符串开头的单双引号/三引号前添加 f 或 F 。在字符串中的{} 之间输入引用的变量，例如：f'Results of the {year} {event}' ，year、event是变量；
+- str.format() 方法：
