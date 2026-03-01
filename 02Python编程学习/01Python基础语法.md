@@ -217,4 +217,32 @@
 - 迭代器会调用iter()和next()方法
 - 生成器可以用来创建迭代器，当它们要返回数据时会使用 yield 语句；yield 表达式和语句仅用于生成器的函数体内。
 
-
+## 标准库Standard Library
+- 操作系统接口：模块os、shutil
+- 文件通配符glob：import glob
+- 命令行参数：模块sys.argv,sys.stdin,sys.stdout,sys.stderr,sys.exit();
+- 字符串模式匹配：模块re为高级字符串处理的正则表达式工具；
+- 数学：math模块提供浮点数数学运算方法；random模块是随机选择工具；统计模块statistics(均值、中位数、方差等);[详见SciPy项目：数值计算](https://scipy.org/)
+- 互联网访问：urllib.request(从URL检索数据)、smtplib(用于发邮件)
+- 日期和时间：datatime模块是日期和时间的类
+- 数据压缩：数据存档和压缩模块zlib,gzip,bz2,lzma,zipfile,tarfile
+- 性能测量timeit模块：from timeit import Timer,可快速测量代码运行耗时；
+- 质量控制：doctest模块提供了一个测试功能，import doctest,doctest.testmod() #自动验证嵌入式测试；unittest模块可以在一个单独的文件中维护更全面的测试集。
+- Standard library 第二部分涵盖了专业编程所需要的更高级的模块。略。
+## 虚拟环境和包
+- 虚拟环境：
+  - venv:创建和管理虚拟环境的模块
+  - 创建虚拟环境：python -m venv t-env #创建了一个名叫t-env的虚拟环境；
+  - 激活虚拟环境：t-env\Scripts\activate
+  - 撤销激活虚拟环境：deactivate。
+- 使用pip管理包
+  - pip安装、升级包，是从[Python Package Index:pypi](https://pypi.org/)安装软件包。
+  - 安装包：
+    - python -m pip install packagename  #安装最新版本的包；
+    - python -m pip install packagename==2.6.0  #安装2.6.0版本的包；
+    - python -m pip install --upgrade packagename  #将包升级到最新版本的包；
+  - 删除包：python -m pip uninstall packagename
+  - 查询包的信息：python -m pip show packagename;
+  - 查询所有在虚拟环境中安装的包:python -m pip list;
+  - 导出当前程序运行所需的依赖包到requestment.txt文件：python -m pip freeze > requirements.txt
+  - 安装配置当前程序运行所需要的依赖包：python -m pip install -r requirements.txt
