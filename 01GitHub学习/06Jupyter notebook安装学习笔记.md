@@ -45,7 +45,7 @@ c.NotebookApp.notebook_dir = 'E:\\jupyter_notebook'
 
 ## 二、安装中文语言包
 
-默认Jupyter Notebook是英文界面，可以使用以下命令安装中文语言包。
+默认Jupyter Notebook是英文界面，可以使用以下命令安装中文语言包，安装成功后进入Jupyter Notebook的英文界面Setting>>Language下，选择中文，重启即可。
 `pip install jupyterlab-language-pack-zh-CN`
 
 ## 三、使用Jupyter Notebook
