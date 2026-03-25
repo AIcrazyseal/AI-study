@@ -1,0 +1,22 @@
+# Agent workflow智能体工作流简介
+
+> 创建：2026.3.25
+
+## 一、Agent AI Workflow智能体工作流
+Agent AI Workflow是**基于LLM、执行多步操作去完成复杂任务**的应用软件。
+### 1. 典型步骤
+- Thinking:按用户要求（用户输入的Prompt）构思任务解决思路；
+- Web Search:是否需要联网搜索、查找资料？
+- Write:根据构思和资料搜索结果，提出一个初步的任务解决方案；
+- Reflect+人工参与:考虑一下，哪些内容需要反思、再研究？可以在反思阶段增加人工参与（例如审核）环节；
+- Revise：修改任务解决方案；
+- 重复上述步骤，直至任务解决方案让被调用的LLM满意。
+
+### 2. Reflective Research Agent反思研究型智能体案例
+反思研究型智能体典型工作流程：
+- Research Agent：执行互联网搜索、资料收集；
+- Research Agent：基于互联网收集的资料，在行业、专业的网站上搜索，进一步收集资料；
+- Research Agent：资料去重，按与任务的相关性、权威性、时间远近排序，合成最终资料；
+- Writer Agent：基于资料收集、分析的结果，起草任务提纲框架；
+- Editor Agent：检查连贯性、覆盖范围、引用、完整性、请求修复；
+- Writer Agent：生成最终全面的Markdown格式报告，附件中有在线引用资料的超链接。
