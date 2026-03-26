@@ -1,7 +1,7 @@
 # 吴恩达 提示词工程Prompt
 
-> 创建：2026.3.18
-> 视频链接：【【吴恩达】2025年公认最好的【提示词工程】教程！大模型入门到进阶，一套全解决！Prompt Engineering-附带课件代码】https://www.bilibili.com/video/BV1173jzNELG?vd_source=f432e53fd4216d9d263cf1d6ef32c226
+> 创建：2026.3.18 \
+> 视频链接：【【吴恩达】2025年公认最好的【提示词工程】教程！https://www.bilibili.com/video/BV1173jzNELG?vd_source=f432e53fd4216d9d263cf1d6ef32c226
 
 ## 一、Prompt书写原则
 
