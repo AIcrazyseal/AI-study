@@ -44,3 +44,10 @@ LLM工具使用：就是LLM请求调用函数。工具就是我们编码提供�
 - 让LLM编写的代码运行在sandbox沙箱中，能降低数据丢失、敏感信息泄露的风险；
 - Docker、E2B可以作为沙箱sandboxe的轻量级方案；
 - MCP让开发者更容易得到大量工具，供LLM使用；
+
+## 四、MCP(Model Context Protocol)模型上下文协议
+- MCP为LLM获取更多上下文和更多工具；
+- MCP提出标准，让应用(client)统一访问服务端（server）的工具tools和数据资源data source;
+- MCP client端是相对MCP server而言，就是用户端的应用程序；
+- MCP server端是对外提供工具tools和数据资源data source、供MCP Client访问的云端资源；
+- dband.ai提供了一个深入讲解MCP的短课程。
