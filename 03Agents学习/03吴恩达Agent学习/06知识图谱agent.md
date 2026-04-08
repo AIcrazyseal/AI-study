@@ -38,6 +38,30 @@
     <p>知识图谱典型架构图</p>
 </div>
 
+- 知识图谱智能体(knowledge graph agent)：
+  - 顶层对话型agent，负责整体引导用户，介绍agent职责，不执行具体工作；
+  - 通过工作流引导用户：从知识图谱构建一直到图谱检索
+- 结构化数据智能体(structured data agent):是workflow agent,从.cvs等文件中导入结构化数据，与subagent交互，其构成如下：
+  - 用户意图智能体(user intent agent):对话型agent，协助用户确定数据导入、分析的目标，明确需求。
+  - 文件建议智能体(file suggestion agent):工具型agent，参考用户意图agent确定的方向和目标，分析和建议相关的结构化数据文件列表，并把文件列表输出到模式提议agent。
+  - 模式提议智能体(schema proposal agent):以批判模式组成的agents，一个agent提出模式设计方案，另一个agent提出评估、自我批评和修改意见，循环迭代优化出一个满足用户意图、合适的知识图谱模式；
+  - 上述3中agent协作工作，最终输出图谱构建计划(不是图谱本身)，即将.cvs等结构化文件转换成知识图谱的构建规则。
+
+- 非结构化数据智能体(unstructured data agent):是workflow agent,从.md等文件中导入非结构化数据，与subagent交互，其构成如下：
+  - 用户意图智能体(user intent agent):对话型agent，协助用户确定数据导入、分析的目标，明确需求。
+  - 文件建议智能体(file suggestion agent):工具型agent，参考用户意图agent确定的方向和目标，分析和建议相关的结构化数据文件列表，并把文件列表输出到模式提议agent。
+  - 实体和事实建议智能体(entities and fact type proposal agent):工具型agent，协助用户从md文本中识别、提取实体及其事实的类型；
+  - 上述3中agent协作工作，最终输出知识抽取计划(不是知识本身)，即将.md等非结构化文本转换成知识的构建规则。
+
+- 结合结构化数据图谱构建计划和非结构化文本知识抽取计划，得到知识抽取和图谱沟通的全部规则，利用知识图谱构建工具完成知识抽取、图谱构建：
+  - 遍历所有结构化数据的构建规则，创建领域图谱(domain graph);
+  - 遍历所有.md文本，分块(chunk)，做向量嵌入，抽取实体及其事实；
+  - 将非结构化实体及其事实与结构化数据创建的领域图谱关联。  
+  
+
+- 图谱检索智能体(graphRAG agent):
+  - 属于工具使用agent，利用图谱回答用户的问题
+
 ## 二、Google ADK介绍
 
 
