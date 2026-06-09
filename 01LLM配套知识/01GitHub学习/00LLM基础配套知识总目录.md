@@ -25,6 +25,7 @@ LLM基础运行环境包括Linux虚拟环境、Docker容器环境。
            https://dockerdocs.xuanyuan.me/tutorial（轩辕）
   
   官方中文教程：https://docs.docker.top/get-started/index.htm（系统全面）
+
   官方英文教程：https://docs.docker.com/get-started/get-docker/（系统全面）
   
 ## 2 LLM各类资源
@@ -39,17 +40,28 @@ Watt Toolkit（网站加速工具）
 
 - 阿里巴巴的魔搭社区：http://www.modelscope.cn
 
-- huggingface社区：国内https://hf-mirror.com 是国外网站 https://huggingface.co/的镜像网站。
+- huggingface社区：国内https://hf-mirror.com 是国外网站 https://huggingface.co/ 的镜像网站。
+  Spaces（AI应用空间/体验中心）汇集了大量基于Hugging Face模型的交互式AI应用Demo。可以：
+    - 在线体验：无需配置环境，点几下就能玩转各种新奇AI应用。
+    - 寻找灵感：看看别人都在用AI做什么好玩的事儿。
+    - 学习与创造：很多Space也提供源代码，是学习和二次开发的好起点
+  如何用好社区：https://zhuanlan.zhihu.com/p/1923227719933622255
 
-https://xuanyuan.cloud
+- 轩辕镜像社区：https://xuanyuan.cloud
 
 ### 2.3常见AI学习资源
 菜鸟教程（https://www.runoob.com/）
 
 ## 3 配套应用工具
-  LLM Models运行环境：llama.cpp/ollama+Openwebui\
+### 3.1 LLM Models的运行环境  
+  推荐使用llama.cpp，运行速度快，但学习成本稍高；ollama+Openwebui上手快，配置复杂，运行速度慢。
+  - llama.cpp
+  
+  - ollama
+  
+  - Openwebui
 
-  Agent编码、运行IDE：VS Code Server/Jupyter notebook\
+  Agent编码、运行IDE：VS Code Server/Jupyter notebook
 
 ## 4 编程开发语言
   Markdown
