@@ -28,9 +28,9 @@
   - python和Markdown：AI开发常用语言；
 
 - 流行Agent框架：
-  - hermes
+  - hermes：Nous Research 推出的 Hermes Agent ，能自我学习、干活的agent，安全性比OpenClaw高；
 
-  - OpenClaw
+  - OpenClaw：俗称“小龙虾”。
 
 ### 1.2 知识学习路径
 LLM的网上教程大体分为官方英文/中文文档、国内高手整理的学习文档两类。
@@ -106,6 +106,8 @@ Watt Toolkit（网站加速工具）
   Python
 
 ## 6 Agent开发框架
-   hermes
+### 6.1 hermes
+- 入门介绍：https://www.feishu.cn/content/article/7628541877674953666
+- 官方文档：
 
-   OpenClaw  
+### 6.2 OpenClaw  
