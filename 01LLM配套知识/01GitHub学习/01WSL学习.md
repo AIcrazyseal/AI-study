@@ -39,8 +39,36 @@ Linux命令大全详见：https://www.runoob.com/linux/linux-command-manual.html
 - 卸载Linux分发版：          `wsl --unregister <linux分发版>`
 
 ### 4.2 文件/目录管理
+- 更改文件所属用户与组：      `chown username:groupname filename`
+- 更改文件权限：             `chmod [augo][rwx] filename`    
+  - a:all; u:user; g:group; o:other
+  - r:readable; w:writable; x:executable
+- 文件绝对路径是从根目录（/）开始的完整路径；
+- 文件相对路径
+  - `.`：表示当前目录。
+  - `..`：表示上一级目录（父目录）。
+  - `~`：表示当前用户的家目录（例如/home/username）。
+- 常用文件/目录管理命令
+  - ls（list files）: 列出目录及文件名
+  - cd（change directory）：切换目录
+  - pwd（print work directory）：显示目前的目录
+  - mkdir（make directory）：创建一个新的目录
+  - rmdir（remove directory）：删除一个空的目录
+  - cp（copy file）: 复制文件或目录
+  - rm（remove）: 删除文件或目录
+  - mv（move file）: 移动文件与目录，或修改文件与目录的名称  
+  - cat（concatenate）：用于查看和连接文件
 
 ### 4.3 用户/用户组管理
+- 用户账号管理
+  - 添加用户账号：useradd 用户名
+  - 删除用户帐号：userdel 用户名
+  - 修改用户账号：usermod 用户名
+- 用户密码管理：passwd [""/-l/u/d/f] 用户名  # 修改密码/-l:禁用账号/-u：口令解锁/-d：账号口令为空/-f：下次登录必须修改口令
+- 用户组管理
+  - 添加用户组：groupadd 选项 用户组名
+  - 删除用户组：groupdel 用户组名
+  - 修改用户组属性：groupmod [-g/o/n] 用户组   #-g：指定新的用户组标识号
 
 ### 4.4 磁盘管理
 
