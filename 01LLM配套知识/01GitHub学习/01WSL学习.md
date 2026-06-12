@@ -17,7 +17,9 @@
 - 最后查看已安装的Linux版本：     `wsl --list --verbose`
 完成以上三步，即成功安装WSL。
 ### 3 配置Linux
-
+- 点击windows启动菜单>>WSL Settings，弹出的界面中可以对分配给Linux的CPU、硬盘、内存、网络等资源进行分配和调整；
+- 可以在这个图形界面中点击“启动wsl.exe”，启动WSL命令行式对话框；
+- 点击“欢迎使用WSL”，弹出WSL相关使用文档。
 ### 4 Linux常用命令
 - 查看在线可安装的Linux版本： `wsl --list --online` 
 - 安装指定的Linux版本：       `wsl --install <linux分发版>`
