@@ -60,6 +60,8 @@ LLM基础运行环境包括Linux虚拟环境、Docker容器环境。
 
   官方英文教程：https://docs.docker.com/get-started/get-docker/（系统全面）
   
+  docker典型配置：
+  
 ## 3 LLM Models及管理工具
 ### 3.1   
   推荐使用llama.cpp，运行速度快，但学习成本稍高；ollama+Openwebui上手快，配置复杂，运行速度慢。
