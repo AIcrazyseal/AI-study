@@ -48,19 +48,20 @@ LLM基础运行环境包括Linux虚拟环境、Docker容器环境。
   在windows中安装WSL2（Windows Subsystem for Linux）和Ubuntu（Linux的一个版本），为容器Docker Desktop工具提供Linux运行环境。
 
   - Linux中文教程：https://www.runoob.com/linux/linux-tutorial.html（快速入门）
-
   - WSL2官方文档：https://learn.microsoft.com/zh-cn/windows/wsl/basic-commands（系统全面）
+  - [WSL学习笔记](01WSL学习.md)
   
 ### 2.2 Docker容器环境搭建
   Docker是一组平台即服务（PaaS）的产品，它基于操作系统层级的虚拟化技术，将软件与其依赖项打包为容器。托管容器的软件称为Docker引擎。Docker能够帮助开发者在轻量级容器中自动部署应用程序，并使得不同容器中的应用程序彼此隔离，高效工作。
-  - 菜鸟教程：https://www.runoob.com/docker/docker-tutorial.html（快速入门）
-           https://dockerdocs.xuanyuan.me/tutorial（轩辕）
+  - 菜鸟教程：
+    - https://www.runoob.com/docker/docker-tutorial.html（快速入门）
+    - https://dockerdocs.xuanyuan.me/tutorial（轩辕）
   
-  - 官方中文教程：https://docs.docker.top/get-started/index.htm（系统全面）
-
-  - 官方英文教程：https://docs.docker.com/get-started/get-docker/（系统全面）
+  - 官方教程（系统全面）：
+    - 中文版：https://docs.docker.top/get-started/index.htm
+    - 英文版：https://docs.docker.com/get-started/get-docker
   
-  - docker典型配置：docker中安装llama.cpp，
+  - [docker学习笔记](02docker学习.md)
   
 ## 3 LLM Models及管理工具
   推荐使用llama.cpp，运行速度快，但学习成本稍高；ollama+Openwebui上手快，配置复杂，运行速度慢。
