@@ -72,10 +72,18 @@ Linux命令大全详见：https://www.runoob.com/linux/linux-command-manual.html
 
 ### 4.4 磁盘管理
 
+- df（disk free）：列出文件系统的整体磁盘使用量； `df [-ahikHTm] [目录或文件名]` # -h：以人类可读的方式显示输出结果（例如，使用 KB、MB、GB 等单位）。
+- du（disk used）：检查磁盘空间使用量;           `du [-ahskm] 文件或目录名称`
+- fdisk：用于磁盘分区：                         `fdisk [-l] 装置名称`
+- 装载Linux磁盘：            `wsl --mount <磁盘路径>`
+- 卸载Linux磁盘：            `wsl --unmount <磁盘路径>`
 ### 4.5 文件编辑
-
-### 4.6 yum&apt命令
-
-
+vi/vim是linux的文本编辑工具，使用方法详见：https://www.runoob.com/linux/linux-vim.html
+### 4.6 apt命令
+apt（Advanced Packaging Tool）是一个在 Debian 和 Ubuntu 中的 Shell **前端软件包管理器**。apt 命令提供了查找、安装、升级、删除某一个、一组甚至全部软件包的命令。apt 命令执行需要超级管理员权限(root)。
+- apt 语法    `apt [options] [command] [package ...]`
+  - options：可选，选项包括 -h（帮助），-y（当安装过程提示选择全部为"yes"），-q（不显示安装的过程）等等。
+  - command：要进行的操作。
+  - package：安装的包名。
 ## 5 官方学习资源
 详见微软的https://learn.microsoft.com/zh-cn/windows/wsl/
