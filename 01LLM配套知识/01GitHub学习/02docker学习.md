@@ -50,12 +50,23 @@ docker存储的两种方式：volume卷和bind mount绑定挂载，容器不存�
   - 容器接入网络：创建容器时用`--network network_name`入网；已运行的容器使用`docker network connect network_name container_name`命令，将正在运行的容器连接到指定的网络。
 
 - 容器网络连接方式：[详见……](https://docs.docker.top/engine/network/drivers/index.htm)
-  - bridge：默认网络驱动程序。
-  - host：删除容器和 Docker 主机之间的网络隔离。
+  - bridge：默认网络驱动程序，不支持跨docker主机之间的网络通信（区别于overlay）。
+    - 使用场景：在同一个docker主机上，接入同一个桥接网络的容器，容器之间可以实现网络通信，网络隔离未连接到该桥接网络的容器。
+    - 网络安全策略：Docker为bridge创建 `iptables` 和 `ip6tables` 规则，防止未经授权访问容器或主机上运行的其他服务，从而实现网络隔离、端口发布和过滤。[详见 `数据包过滤和防火墙`……](https://docs.docker.top/engine/network/packet-filtering-firewalls/index.htm)
+    - 默认桥接网络
+
+    - 用户自定义桥接网络：
+
+    - 桥接网络的连接限制：由于Linux内核设置的限制，当1000个或更多容器连接到单个网络时，桥接网络会变得不稳定，容器间通信可能会中断。
+
+
+
+  - host：删除容器和 Docker 主机之间的网络隔离，容器直接使用主机的网络和80端口，即通过主机的localhost：80即可访问容器，容器没有自己的IP地址。
   - none：将容器与主机和其他容器完全隔离。
-  - overlay：Overlay 网络将多个 Docker 守护程序连接在一起。
-  - ipvlan：IPvlan 网络提供对 IPv4 和 IPv6 地址的完全控制。
-  - macvlan：为容器分配 MAC 地址。
+  - overlay：将多个 Docker 守护程序连接在一起，并使Swarm服务和容器能够跨节点进行通信，消除了进行操作系统级路由的需要。
+    - 使用场景：跨docker主机的多个容器需要通信，或者多个应用程序使用Swarm服务协同工作时；
+  - ipvlan：完全控制IPv4和IPv6寻址。
+  - macvlan：为容器分配 MAC 地址，Docker守护程序通过容器的MAC地址将流量路由到容器。
 
 - 容器网络端口
   - 发布容器端口默认情况下对 Docker 主机和对外部世界都可用，故不安全；
@@ -99,7 +110,7 @@ docker存储的两种方式：volume卷和bind mount绑定挂载，容器不存�
     - https://dockerdocs.xuanyuan.me/tutorial（轩辕）
   
   - 官方教程（系统全面）：
-    - 中文版：https://docs.docker.top/get-started/index.htm（分为入门、指南、手册、参考）
+    - 中文版：https://docs.docker.top/manuals/index.htm（分为入门、指南、手册、参考）
     - 英文版：https://docs.docker.com/get-started/get-docker
 
 ## 2 docker配置
