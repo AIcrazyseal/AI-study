@@ -44,33 +44,55 @@ docker存储的两种方式：volume卷和bind mount绑定挂载，容器不存�
 
 #### 1.1.4网络 (Network)
 容器只能看到一个具有 IP 地址、网关、路由表、DNS 服务和其他网络细节的网络接口。
-- docker容器间组网：
+- docker容器间组网（同一docker主机的桥接bridge组网和跨docker主机的overlay组网）：
   - 创建用户自定义网络`docker network create -d bridge my-net`，可将多个容器连接到同一个网络，容器之间可以使用容器 IP 地址或容器名称相互通信。
   - 容器间通信：通过将容器连接到同一网络（通常是 `桥接网络`）即可。
   - 容器接入网络：创建容器时用`--network network_name`入网；已运行的容器使用`docker network connect network_name container_name`命令，将正在运行的容器连接到指定的网络。
 
 - 容器网络连接方式：[详见……](https://docs.docker.top/engine/network/drivers/index.htm)
   - bridge：默认网络驱动程序，不支持跨docker主机之间的网络通信（区别于overlay）。
-    - 使用场景：在同一个docker主机上，接入同一个桥接网络的容器，容器之间可以实现网络通信，网络隔离未连接到该桥接网络的容器。
+    - 使用场景：在同一个docker主机上，接入同一个桥接网络的容器，都可以访问其他容器公开的所有端口，网络隔离未连接到该桥接网络的容器。
     - 网络安全策略：Docker为bridge创建 `iptables` 和 `ip6tables` 规则，防止未经授权访问容器或主机上运行的其他服务，从而实现网络隔离、端口发布和过滤。[详见 `数据包过滤和防火墙`……](https://docs.docker.top/engine/network/packet-filtering-firewalls/index.htm)
-    - 默认桥接网络
+    - 默认桥接网络(生产环境不推荐)
+      - **创建和配置**：不可创建，只可配置；默认桥接网络的配置发生在Docker本身之外，修改配置需重启Docker访客生效；
       - **通信方式**：默认桥接网络上的容器只能通过IP地址相互访问；
       - **网络安全性**：所有未指定--network的容器都附加到默认桥接网络，容器间都可以通信，存在被无关容器访问的潜在网络风险；
       - **容器入网方式**：要从默认桥接网络中移除容器，您需要停止容器并使用不同的网络选项重新创建它。
 
-    - 用户自定义桥接网络：
+    - 用户自定义桥接网络（推荐这种网络方式）
+      - **创建和配置**：`docker network create network_name`创建，可以配置网络信息；
       - **通信方式**：用户定义的桥接提供容器之间的自动DNS解析，容器间通过容器名或别名相互访问；
       - **网络安全性**：只有附加到用户自定义网络的容器才能相互通信；
-      - **容器入网方式**：容器可以动态地附加到用户定义的网络和从用户定义的网络分离，
+      - **容器入网方式**：容器可以动态地附加到用户定义的网络和从用户定义的网络分离
+      - 用户自定义网络常用命令：
+        - 创建网络：`docker network create network_name`;
+        - 删除网络：`docker network rm network_name`;
+        - 接入网络：创建新容器时，用`--network network_name`入网;已有容器入网用`docker network connect network_name container_name`
+        - 断开网络：`docker network disconnect network_name container_name`
 
     - 桥接网络的连接限制：由于Linux内核设置的限制，当1000个或更多容器连接到单个网络时，桥接网络会变得不稳定，容器间通信可能会中断。
 
 
-
   - host：删除容器和 Docker 主机之间的网络隔离，容器直接使用主机的网络和80端口，即通过主机的localhost：80即可访问容器，容器没有自己的IP地址。
   - none：将容器与主机和其他容器完全隔离。
-  - overlay：将多个 Docker 守护程序连接在一起，并使Swarm服务和容器能够跨节点进行通信，消除了进行操作系统级路由的需要。
+  - overlay：在多个 Docker daemon 主机之间创建分布式网络，允许连接到overlay网络的容器进行加密通信。Docker 透明地处理从正确的 Docker daemon 主机到正确的目标容器的每个数据包的路由。
+    - 跨docker主机将多个 Docker 守护程序连接在一起，并使Swarm服务和容器能够跨节点进行通信，消除了进行操作系统级路由的需要。
     - 使用场景：跨docker主机的多个容器需要通信，或者多个应用程序使用Swarm服务协同工作时；
+    - 参与 Overlay 网络的每个主机需要打开的端口
+      |端口	| 描述 |
+      |-----|-----|
+      |2377/tcp	|默认 Swarm 控制平面端口，可以使用 `docker swarm join --listen-addr` 配置|
+      |4789/udp	|默认 Overlay 流量端口，可以使用 `docker swarm init --data-path-addr` 配置|
+      |7946/tcp, 7946/udp	|用于节点之间的通信，不可配置|
+    - 创建overlay网络：
+      ```
+      docker network create \            #创建docker网络
+      --opt encrypted \                  #网络数据加密
+      --driver overlay \                 #网络驱动为overlay
+      --attachable \                     #使独立容器和 Swarm 服务都可以连接到 Overlay 网络
+      my-attachable-multi-host-network   #overlay网络名
+      ```
+    - Overlay网络的连接限制：由于 Linux 内核的限制，当同一主机上同时存在 1000 个容器时，覆盖网络会变得不稳定，容器间的通信可能会中断。
   - ipvlan：完全控制IPv4和IPv6寻址。
   - macvlan：为容器分配 MAC 地址，Docker守护程序通过容器的MAC地址将流量路由到容器。
 
