@@ -52,10 +52,10 @@ docker存储的两种方式：volume卷和bind mount绑定挂载，当删除容�
     - volume_name:卷名
     - destination_path：卷要挂载到容器的文件夹位置
     - ro/rw:ro(readonly只读权限)，rw(read & write读写权限)
-  - **--mount参数说明**：由多个键值对组成，用逗号分隔，每个键值对由一个<key>=<value>元组组成
-    - 典型写法：`--mount 'type=volume,src=<VOLUME-NAME>,dst=<CONTAINER-PATH>,volume-driver=local,volume-opt=type=nfs,volume-opt=device=<nfs-server>:<nfs-path>,"volume-opt=o=addr=<nfs-address>,vers=4,soft,timeo=180,bg,tcp,rw"'
+  - **--mount参数说明**：由多个键值对组成，用逗号分隔，每个键值对由一个`<key>=<value>`元组组成
+    - 典型写法：`--mount 'type=volume,src=< VOLUME-NAME>,dst=< CONTAINER-PATH>,volume-driver=local,volume-opt=type=nfs,volume-opt=device=< nfs-server>:< nfs-path>,"volume-opt=o=addr=< nfs-address>,vers=4,soft,timeo=180,bg,tcp,rw"'
     - type:可以是bind、volume或tmpfs
-    - src=<VOLUME-NAME>,命名卷src为卷名，匿名卷要省略src；
+    - src=< VOLUME-NAME>,命名卷src为卷名，匿名卷要省略src；
     - dest的值是文件或目录在容器中挂载的路径，destination、dst或target含义是等价的；
     - volume-subpath：指定要挂载到容器中的卷内子目录的路径，子目录必须存在于卷中；
   - **挂载卷子目录**：使用 --mount 标志的 volume-subpath。先新建卷，然后在卷下创建子目录，然后将卷的不同子目录挂载到不同的容器，实现不同容器的数据集中管理、各容器的数据相互隔离；示例如下：
@@ -90,14 +90,16 @@ docker存储的两种方式：volume卷和bind mount绑定挂载，当删除容�
     - destination_path：卷要挂载到容器的文件夹位置
     - ro/rw:ro(readonly只读权限)，rw(read & write读写权限)
 
-- **--mount参数说明**：绑定挂载以只读的方式挂载到容器，volume的type:bind，其他参数含义与vulume的挂载一样；
+- **--mount参数说明**：绑定挂载以只读的方式挂载到容器，volume的type:bind，其他参数含义与volume的挂载一样；
 
 
 
 #### 1.1.4网络 (Network)
 容器只能看到一个具有 IP 地址、网关、路由表、DNS 服务和其他网络细节的网络接口。
 
-- 容器网络连接方式：bridge、host、overlay、ipvlan、macvlan、none[详见……](https://docs.docker.top/engine/network/drivers/index.htm)
+查看自定义网络中有哪些容器：`docker network inspect <您的自定义网络名> --format '{{range .Containers}}{{.Name}} ({{.IPv4Address}}) {{end}}'`
+
+- 容器网络连接方式：bridge、host、overlay、ipvlan、macvlan、none[详见手册……](https://docs.docker.top/engine/network/drivers/index.htm)
 - docker容器间组网（同一docker主机的桥接bridge组网和跨docker主机的overlay组网）：
   - 创建用户自定义网络`docker network create -d bridge my-net`，可将多个容器连接到同一个网络，容器之间可以使用容器 IP 地址或容器名称相互通信。
   - 容器间通信：通过将容器连接到同一网络（通常是 `桥接网络`）即可。
@@ -202,12 +204,12 @@ overlay网络在多个 Docker daemon 主机之间创建分布式网络，允许�
 
 ## 2 docker配置
 docker build调用Dockerfile镜像构建文本文件（内含构建镜像所需的指令和说明），创建镜像image，可上传到仓库注册服务器Registry，存储在仓库Repository中；
-docker compose调用yml容器构建文本文件（内含构建容器所需的指令和说明），创建容器container；
+docker compose调用yaml容器构建文本文件（内含构建容器所需的指令和说明），创建容器container。
 ### 2.1 docker desktop配置
 上网代理proxy
 docker中的容器（例如vs code server）要与国外网站（例如github）同步，需要配置上网代理proxy。
 `注：proxy安装在宿主机host上，docker软件、docker容器需分别设置，才能使用宿主机host的proxy。`
-- docker软件上网代理proxy配置
+- docker desktop软件上网代理proxy配置
 
 - docker容器上网代理proxy配置
   proxy配置好后，新建的容器可以直接使用代理；之前已创建的容器，必须重新创建，才能是容器的proxy生效。
