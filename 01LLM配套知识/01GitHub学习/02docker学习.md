@@ -1,5 +1,5 @@
 # docker desktop学习
-> 2026.6.12
+> 2026.6.12创建
 
 ## 1 Docker介绍
    Docker 是一个开源的应用容器引擎，是一组平台即服务（PaaS）的产品，它基于操作系统层级的虚拟化技术，将软件与其依赖项打包为容器。托管容器的软件称为Docker引擎。Docker能够帮助开发者在轻量级容器中自动部署应用程序，并使得不同容器中的应用程序彼此隔离，高效工作。
@@ -53,7 +53,10 @@ docker存储的两种方式：volume卷和bind mount绑定挂载，当删除容�
     - destination_path：卷要挂载到容器的文件夹位置
     - ro/rw:ro(readonly只读权限)，rw(read & write读写权限)
   - **--mount参数说明**：由多个键值对组成，用逗号分隔，每个键值对由一个`<key>=<value>`元组组成
-    - 典型写法：`--mount 'type=volume,src=< VOLUME-NAME>,dst=< CONTAINER-PATH>,volume-driver=local,volume-opt=type=nfs,volume-opt=device=< nfs-server>:< nfs-path>,"volume-opt=o=addr=< nfs-address>,vers=4,soft,timeo=180,bg,tcp,rw"'
+    - 典型写法：
+    ``` 
+      `--mount 'type=volume,src=< VOLUME-NAME>,dst=< CONTAINER-PATH>,volume-driver=local,volume-opt=type=nfs,volume-opt=device=< nfs-server>:< nfs-path>,"volume-opt=o=addr=< nfs-address>,vers=4,soft,timeo=180,bg,tcp,rw"'
+    ```
     - type:可以是bind、volume或tmpfs
     - src=< VOLUME-NAME>,命名卷src为卷名，匿名卷要省略src；
     - dest的值是文件或目录在容器中挂载的路径，destination、dst或target含义是等价的；
@@ -181,8 +184,8 @@ overlay网络在多个 Docker daemon 主机之间创建分布式网络，允许�
 - Docker是C/S架构，Docker 客户端与 Docker daemon守护进程通信，Docker daemon守护进程与docker regiestry就镜像、扩展和插件进行交互。
 - Docker Desktop由以下模块构成：
   - Docker Engine：由Docker Client + Docker Daemon + REST API组成，是Docker的核心组件
-  - Docker CLI客户端：用户与Docker交互的主要方式，接收用户命令并发送给本地或远程Docker Daemon
-  - Docker Daemon守护进程：是Docker的核心服务进程，管理镜像、容器、网络和存储卷，监听Docker API请求并处理
+    - Docker CLI客户端：用户与Docker交互的主要方式，接收用户命令并发送给本地或远程Docker Daemon
+    - Docker Daemon守护进程：是Docker的核心服务进程，管理镜像、容器、网络和存储卷，监听Docker API请求并处理
   - Docker Registry（docker hub）：存储和分发Docker镜像，提供镜像的版本管理，支持公有和私有仓库
   - Docker Scout（可能需要额外订阅）
   - Docker Build
@@ -204,6 +207,7 @@ overlay网络在多个 Docker daemon 主机之间创建分布式网络，允许�
 
 ## 2 docker配置
 docker build调用Dockerfile镜像构建文本文件（内含构建镜像所需的指令和说明），创建镜像image，可上传到仓库注册服务器Registry，存储在仓库Repository中；
+
 docker compose调用yaml容器构建文本文件（内含构建容器所需的指令和说明），创建容器container。
 ### 2.1 docker desktop配置
 上网代理proxy
@@ -214,8 +218,10 @@ docker中的容器（例如vs code server）要与国外网站（例如github）
 - docker容器上网代理proxy配置
   proxy配置好后，新建的容器可以直接使用代理；之前已创建的容器，必须重新创建，才能是容器的proxy生效。
 
-### 2.2 镜像配置和创建（Docker build Dockfile）
-编写Dockfile文件，用docker build命令调用Dockfile文件，生成镜像。
+### 2.2 镜像配置和创建（Docker buildx Dockfile）
+**Docker buildx命令和Dockfile是学习docker的重点。**
+
+编写Dockfile文件，用docker buildx命令调用Dockfile文件，生成镜像。
 
 [Dockerfile 概述-手册](https://docs.docker.top/build/concepts/dockerfile/index.htm)
 
@@ -224,6 +230,8 @@ docker中的容器（例如vs code server）要与国外网站（例如github）
 [Dockfile文件参考](https://docs.docker.top/reference/dockerfile/index.htm)
 
 ### 2.3 容器配置和创建（Docker compose yaml）
+**Docker compose命令和yaml配置文件是学习docker的重点。**
+
 编写compose.yaml文件（文件中设置服务、容器名、卷和网络，引用镜像），用docker compose up -f ~/compose.yaml，生成容器。
 
 [Docker compose手册](https://docs.docker.top/compose/index.htm)
@@ -292,7 +300,7 @@ docker中的容器（例如vs code server）要与国外网站（例如github）
 
 ### 3.1 docker contrainer常用命令
   docker container子命令全部是容器管理的命令。
-  [容器常用命令:docker container COMMAND](https://docs.docker.top/reference/cli/docker/container/index.htm)
+  [容器常用命令:docker container COMMAND……](https://docs.docker.top/reference/cli/docker/container/index.htm)
 
   |命令                               |描述|
   |:----------------------------------|:---|
@@ -324,7 +332,7 @@ docker中的容器（例如vs code server）要与国外网站（例如github）
 
 ### 3.2 docker image常用命令
   docker image子命令全部是镜像管理的命令。
-  [镜像常用命令:docker image COMMAND](https://docs.docker.top/reference/cli/docker/image/index.htm)
+  [镜像常用命令:docker image COMMAND……](https://docs.docker.top/reference/cli/docker/image/index.htm)
   
   |命令                  |描述|
   |:--------------------|:---|
@@ -342,7 +350,7 @@ docker中的容器（例如vs code server）要与国外网站（例如github）
 
 ### 3.3 docker network常用命令
   docker network子命令全部是网络管理的命令。
-  [网络常用命令:docker network COMMAND](https://docs.docker.top/reference/cli/docker/network/index.htm)
+  [网络常用命令:docker network COMMAND……](https://docs.docker.top/reference/cli/docker/network/index.htm)
 
   |命令                      |描述|
   |:-------------------------|:---|
@@ -356,7 +364,7 @@ docker中的容器（例如vs code server）要与国外网站（例如github）
 
 ### 3.4 docker volume常用命令
   docker volume子命令全部是存储管理的命令。
-  [存储常用命令:docker volume COMMAND](https://docs.docker.top/reference/cli/docker/volume/index.htm)
+  [存储常用命令:docker volume COMMAND……](https://docs.docker.top/reference/cli/docker/volume/index.htm)
 
   |命令                    |描述|
   |:-----------------------|:---|
@@ -368,8 +376,8 @@ docker中的容器（例如vs code server）要与国外网站（例如github）
   | docker volume update   |更新卷（仅限集群卷）|
 
 ### 3.5 docker compose常用命令
-  docker compose子命令全部是定义和运行多容器应用程序的命令。
-  [容器和服务构建Docker Compose常用命令](https://docs.docker.top/reference/cli/docker/compose/index.htm)
+  docker compose子命令全部是定义和运行多容器应用程序的命令，需重点学习。
+  [容器和服务构建Docker Compose常用命令……](https://docs.docker.top/reference/cli/docker/compose/index.htm)
 
   |命令                          |描述|
   |:-----------------------------|:---|
@@ -403,8 +411,8 @@ docker中的容器（例如vs code server）要与国外网站（例如github）
   | docker compose alpha         |实验性命令|
 
 ### 3.6 docker buildx常用命令
-  docker buildx子命令全部是
-  [镜像构建Dock bulidx常用命令](https://docs.docker.top/reference/cli/docker/buildx/index.htm)
+  docker buildx子命令全部是，需重点学习。
+  [镜像构建Dock bulidx常用命令……](https://docs.docker.top/reference/cli/docker/buildx/index.htm)
 
   |命令                      |描述|
   |:-------------------------|:---|
