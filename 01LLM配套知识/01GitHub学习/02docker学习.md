@@ -298,12 +298,12 @@ docker中的容器（例如vs code server）要与国外网站（例如github）
   | docker version                    |显示Docker版本信息|
   | docker help                       |显示Docker命令的帮助信息|
 
-### 3.1 docker contrainer常用命令
+### 3.1 docker container常用命令
   docker container子命令全部是容器管理的命令。
   [容器常用命令:docker container COMMAND……](https://docs.docker.top/reference/cli/docker/container/index.htm)
 
   |命令                               |描述|
-  |:----------------------------------|:---|
+  |:----------------------------------|:---|Container
   | docker container ls               |列出容器|
   | docker container run              |根据镜像创建并运行新容器|
   | docker container start            |启动一个或多个已停止的容器|
