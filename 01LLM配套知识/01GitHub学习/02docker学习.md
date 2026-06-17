@@ -235,18 +235,194 @@ docker中的容器（例如vs code server）要与国外网站（例如github）
 [compose.yaml 文件参考](https://docs.docker.top/reference/compose-file/index.htm)
 
 ## 3 docker常用命令
-[docker菜鸟常用命令教程](https://www.runoob.com/docker/docker-command-manual.html)
+以下docker常用命令全部是按使用频率从高到低的顺序展示。
+### 3.1 docker 前50个常用命令
+  |命令                                |描述|
+  |:----------------------------------|:---|
+  | docker run                        |根据镜像创建并运行新容器|
+  | docker ps                         |列出正在运行的容器|
+  | docker images                     |列出镜像|
+  | docker stop                       |停止一个或多个正在运行的容器|
+  | docker start                      |启动一个或多个已停止的容器|
+  | docker rm                         |删除一个或多个容器|
+  | docker rmi                        |删除一个或多个镜像|
+  | docker logs                       |获取容器的日志|
+  | docker exec                       |在正在运行的容器中执行命令|
+  | docker pull                       |从注册表下载镜像|
+  | docker push                       |将镜像上传到注册表|
+  | docker build                      |根据Dockerfile构建镜像|
+  | docker inspect                    |显示一个或多个容器或镜像的详细信息|
+  | docker ps -a                      |列出所有容器（包括停止的）|
+  | docker restart                    |重启一个或多个容器|
+  | docker kill                       |终止一个或多个正在运行的容器|
+  | docker stats                      |显示容器资源使用情况统计信息的实时流|
+  | docker top                        |显示容器的运行进程|
+  | docker port                       |列出容器的端口映射或特定映射|
+  | docker cp                         |复制容器和本地文件系统之间的文件/文件夹|
+  | docker volume ls                  |列出卷|
+  | docker network ls                 |列出网络|
+  | docker system df                  |显示docker磁盘使用情况|
+  | docker login                      |登录到Docker注册表|
+  | docker logout                     |登出Docker注册表|
+  | docker search                     |在Docker Hub中搜索镜像|
+  | docker tag                        |创建一个指向SOURCE_IMAGE的目标镜像标签|
+  | docker commit                     |根据容器的更改创建新的镜像|
+  | docker create                     |创建一个新的容器但不启动它|
+  | docker diff                       |检查容器文件系统上文件或目录的更改|
+  | docker export                     |将容器的文件系统导出为tar存档|
+  | docker volume create              |创建卷|
+  | docker volume rm                  |删除一个或多个卷|
+  | docker network create             |创建网络|
+  | docker network connect            |将容器连接到网络|
+  | docker network disconnect         |将容器从网络断开连接|
+  | docker network rm                 |删除一个或多个网络|
+  | docker-compose up                 |创建并启动compose服务|
+  | docker-compose down               |停止并删除compose服务|
+  | docker-compose ps                 |列出compose服务的容器|
+  | docker-compose logs               |查看compose服务的容器日志|
+  | docker-compose exec               |在运行的compose服务容器中执行命令|
+  | docker-compose build              |构建或重建compose服务|
+  | docker-compose restart            |重启compose服务|
+  | docker-compose stop               |停止compose服务|
+  | docker-compose start              |启动compose服务|
+  | docker-compose config             |验证并查看compose配置|
+  | docker info                       |显示系统范围的信息|
+  | docker version                    |显示Docker版本信息|
+  | docker help                       |显示Docker命令的帮助信息|
 
-[docker官方中文版-全部命令](https://docs.docker.top/reference/cli/docker/index.htm)
+### 3.1 docker contrainer常用命令
+  docker container子命令全部是容器管理的命令。
+  [容器常用命令:docker container COMMAND](https://docs.docker.top/reference/cli/docker/container/index.htm)
 
-[容器常用命令:docker container COMMAND](https://docs.docker.top/reference/cli/docker/container/index.htm)
+  |命令                               |描述|
+  |:----------------------------------|:---|
+  | docker container ls               |列出容器|
+  | docker container run              |根据镜像创建并运行新容器|
+  | docker container start            |启动一个或多个已停止的容器|
+  | docker container stop             |停止一个或多个正在运行的容器|
+  | docker container rm               |删除一个或多个容器|
+  | docker container exec             |在正在运行的容器中执行命令|
+  | docker container logs             |获取容器的日志|
+  | docker container inspect          |显示一个或多个容器的详细信息|
+  | docker container ps               |列出容器（注：这是docker container ls的别名）|
+  | docker container restart          |重启一个或多个容器|
+  | docker container kill             |终止一个或多个正在运行的容器|
+  | docker container port             |列出容器的端口映射或特定映射|
+  | docker container stats            |显示容器资源使用情况统计信息的实时流|
+  | docker container top              |显示容器的运行进程|
+  | docker container cp               |复制容器和本地文件系统之间的文件/文件夹|
+  | docker container prune            |删除所有已停止的容器|
+  | docker container attach           |将本地标准输入、输出和错误流附加到正在运行的容器|
+  | docker container commit           |根据容器的更改创建新的镜像|
+  | docker container diff             |检查容器文件系统上文件或目录的更改|
+  | docker container export           |将容器的文件系统导出为tar存档|
+  | docker container rename           |重命名容器|
+  | docker container unpause          |取消暂停一个或多个容器中的所有进程|
+  | docker container pause            |暂停一个或多个容器中的所有进程|
+  | docker container update           |更新一个或多个容器的配置|
+  | docker container wait             |阻塞直到一个或多个容器停止，然后打印它们的退出代码|
 
-[镜像常用命令:docker image COMMAND](https://docs.docker.top/reference/cli/docker/image/index.htm)
+### 3.2 docker image常用命令
+  docker image子命令全部是镜像管理的命令。
+  [镜像常用命令:docker image COMMAND](https://docs.docker.top/reference/cli/docker/image/index.htm)
+  
+  |命令                  |描述|
+  |:--------------------|:---|
+  | docker image ls     |列出镜像|
+  | docker image pull   |从注册表下载镜像|
+  | docker image push   |将镜像上传到注册表|
+  | docker image inspect|显示一个或多个镜像的详细信息|
+  | docker image rm     |移除一个或多个镜像|
+  | docker image tag    |创建一个指向 SOURCE_IMAGE 的 TARGET_IMAGE 标签|
+  | docker image prune  |移除未使用的镜像|
+  | docker image save   |将一个或多个镜像保存到 tar 存档（默认情况下流式传输到 STDOUT）|
+  | docker image load   |从 tar 存档或 STDIN 加载镜像|
+  | docker image history|显示镜像的历史记录|
+  | docker image import |从 tarball 导入内容以创建文件系统镜像|
 
-[存储常用命令:docker volume COMMAND](https://docs.docker.top/reference/cli/docker/volume/index.htm)
+### 3.3 docker network常用命令
+  docker network子命令全部是网络管理的命令。
+  [网络常用命令:docker network COMMAND](https://docs.docker.top/reference/cli/docker/network/index.htm)
 
-[网络常用命令:docker network COMMAND](https://docs.docker.top/reference/cli/docker/network/index.htm)
+  |命令                      |描述|
+  |:-------------------------|:---|
+  | docker network ls        |列出网络|
+  | docker network create    |创建网络|
+  | docker network inspect   |显示一个或多个网络的详细信息|
+  | docker network connect   |将容器连接到网络|
+  | docker network disconnect|将容器从网络断开连接|
+  | docker network rm        |删除一个或多个网络|
+  | docker network prune     |删除所有未使用的网络|
 
-[镜像构建Dock bulidx常用命令](https://docs.docker.top/reference/cli/docker/buildx/index.htm)
+### 3.4 docker volume常用命令
+  docker volume子命令全部是存储管理的命令。
+  [存储常用命令:docker volume COMMAND](https://docs.docker.top/reference/cli/docker/volume/index.htm)
 
-[容器和服务构建Docker Compose常用命令](https://docs.docker.top/reference/cli/docker/compose/index.htm)
+  |命令                    |描述|
+  |:-----------------------|:---|
+  | docker volume ls       |列出卷|
+  | docker volume create   |创建卷|
+  | docker volume inspect  |显示一个或多个卷的详细信息|
+  | docker volume rm       |删除一个或多个卷|
+  | docker volume prune    |删除未使用的本地卷|
+  | docker volume update   |更新卷（仅限集群卷）|
+
+### 3.5 docker compose常用命令
+  docker compose子命令全部是定义和运行多容器应用程序的命令。
+  [容器和服务构建Docker Compose常用命令](https://docs.docker.top/reference/cli/docker/compose/index.htm)
+
+  |命令                          |描述|
+  |:-----------------------------|:---|
+  | docker compose up            |创建并启动容器|
+  | docker compose down          |停止并删除容器、网络|
+  | docker compose ps            |列出容器|
+  | docker compose logs          |查看容器的输出|
+  | docker compose exec          |在正在运行的容器中执行命令|
+  | docker compose config        |以规范格式解析、解析和呈现 compose 文件|
+  | docker compose build         |构建或重建服务|
+  | docker compose start         |启动服务|
+  | docker compose stop          |停止服务|
+  | docker compose restart       |重新启动服务容器|
+  | docker compose run           |在一个服务上运行一次性命令|
+  | docker compose pull          |拉取服务镜像|
+  | docker compose ls            |列出正在运行的 compose 项目|
+  | docker compose rm            |删除已停止的服务容器|
+  | docker compose images        |列出已创建容器使用的镜像|
+  | docker compose kill          |强制停止服务容器|
+  | docker compose pause         |暂停服务|
+  | docker compose unpause       |取消暂停服务|
+  | docker compose port          |打印端口绑定的公共端口|
+  | docker compose events        |接收来自容器的实时事件|
+  | docker compose top           |显示正在运行的进程|
+  | docker compose push          |推送服务镜像|
+  | docker compose cp            |在服务容器和本地文件系统之间复制文件/文件夹|
+  | docker compose create        |为服务创建容器|
+  | docker compose watch         |监视服务构建上下文，并在文件更新时重建/刷新容器|
+  | docker compose wait          |阻止直到所有（或指定的）服务的容器停止。|
+  | docker compose version       |显示 Docker Compose 版本信息|
+  | docker compose alpha         |实验性命令|
+
+### 3.6 docker buildx常用命令
+  docker buildx子命令全部是
+  [镜像构建Dock bulidx常用命令](https://docs.docker.top/reference/cli/docker/buildx/index.htm)
+
+  |命令                      |描述|
+  |:-------------------------|:---|
+  | docker buildx build      |启动构建|
+  | docker buildx ls         |列出构建器实例|
+  | docker buildx create     |创建一个新的构建器实例|
+  | docker buildx inspect    |检查当前构建器实例|
+  | docker buildx use        |设置当前构建器实例|
+  | docker buildx rm         |移除一个或多个构建器实例|
+  | docker buildx prune      |移除构建缓存|
+  | docker buildx stop       |停止构建器实例|
+  | docker buildx bake       |从文件构建|
+  | docker buildx imagetools |用于处理注册表中镜像的命令|
+  | docker buildx du         |磁盘使用情况|
+  | docker buildx debug      |启动调试器|
+  | docker buildx version    |显示 buildx 版本信息|
+
+### 3.7 docker常用命令教程
+  [docker菜鸟常用命令教程](https://www.runoob.com/docker/docker-command-manual.html)
+
+  [docker官方中文版-全部命令](https://docs.docker.top/reference/cli/docker/index.htm)
