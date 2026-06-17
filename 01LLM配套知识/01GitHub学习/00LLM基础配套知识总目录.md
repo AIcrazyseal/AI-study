@@ -97,7 +97,11 @@ LLM基础运行环境包括Linux虚拟环境、Docker容器环境。
 
 - gitee：中国版github，是开源中国于 2013 年推出的基于Git的中国境内规模最大代码托管平台、企业级研发效能平台、一站式 DevSecOps 平台，提供中国本土化的代码托管和项目管理服务。
 
-- Watt Toolkit：网页代理工具（VPN），主要用于国外网站加速，例如：github、huggingface等；
+- Watt Toolkit：免费网页代理工具（VPN），主要用于国外网站加速，例如：github、huggingface等；
+- Clash Verge Rev：免费网页代理工具；
+  - [Clash Verge Rev网页代理github下载链接](https://github.com/clash-verge-rev/clash-verge-rev/releases)；
+  - [Clash Verge Rev官方网站](www.clashverge.dev)
+  - [使用教程](https://www.clashverge.dev/guide/quickstart.html#_1)
 
 ## 5 编程开发工具及语言
   - VS Code Server：Agent编码、运行IDE，功能强大，插件丰富，可与github同步，实现代码和知识的版本管理，企业级开发推荐使用，学习成本较高；
